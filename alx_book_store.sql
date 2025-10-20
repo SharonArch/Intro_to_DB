@@ -23,9 +23,9 @@ DROP TABLE IF EXISTS `authors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `authors` (
-  `author_id` int NOT NULL AUTO_INCREMENT,
-  `author_name` varchar(215) DEFAULT NULL,
-  PRIMARY KEY (`author_id`)
+  `AUTHOR_ID` int NOT NULL AUTO_INCREMENT,
+  `AUTHOR_NAME` varchar(215) DEFAULT NULL,
+  PRIMARY KEY (`AUTHOR_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -46,14 +46,14 @@ DROP TABLE IF EXISTS `books`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `books` (
-  `book_id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(130) DEFAULT NULL,
-  `author_id` int DEFAULT NULL,
-  `price` double DEFAULT NULL,
-  `publication_date` date DEFAULT NULL,
-  PRIMARY KEY (`book_id`),
-  KEY `author_id` (`author_id`),
-  CONSTRAINT `books_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `authors` (`author_id`)
+  `BOOK_ID` int NOT NULL AUTO_INCREMENT,
+  `TITLE` varchar(130) DEFAULT NULL,
+  `AUTHOR_ID` int DEFAULT NULL,
+  `PRICE` double DEFAULT NULL,
+  `PUBLICATION_DATE` date DEFAULT NULL,
+  PRIMARY KEY (`BOOK_ID`),
+  KEY `AUTHOR_ID` (`AUTHOR_ID`),
+  CONSTRAINT `books_ibfk_1` FOREIGN KEY (`AUTHOR_ID`) REFERENCES `authors` (`AUTHOR_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -74,11 +74,11 @@ DROP TABLE IF EXISTS `customers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `customers` (
-  `customer_id` int NOT NULL AUTO_INCREMENT,
-  `customer_name` varchar(215) DEFAULT NULL,
-  `email` varchar(215) DEFAULT NULL,
-  `address` text,
-  PRIMARY KEY (`customer_id`)
+  `CUSTOMER_ID` int NOT NULL AUTO_INCREMENT,
+  `CUSTOMER_NAME` varchar(215) DEFAULT NULL,
+  `EMAIL` varchar(215) DEFAULT NULL,
+  `ADDRESS` text,
+  PRIMARY KEY (`CUSTOMER_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -99,15 +99,15 @@ DROP TABLE IF EXISTS `order_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `order_details` (
-  `orderdetailid` int NOT NULL AUTO_INCREMENT,
-  `order_id` int DEFAULT NULL,
-  `book_id` int DEFAULT NULL,
-  `quantity` double DEFAULT NULL,
-  PRIMARY KEY (`orderdetailid`),
-  KEY `order_id` (`order_id`),
-  KEY `book_id` (`book_id`),
-  CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
-  CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `books` (`book_id`)
+  `ORDERDETAILID` int NOT NULL AUTO_INCREMENT,
+  `ORDER_ID` int DEFAULT NULL,
+  `BOOK_ID` int DEFAULT NULL,
+  `QUANTITY` double DEFAULT NULL,
+  PRIMARY KEY (`ORDERDETAILID`),
+  KEY `ORDER_ID` (`ORDER_ID`),
+  KEY `BOOK_ID` (`BOOK_ID`),
+  CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`ORDER_ID`) REFERENCES `orders` (`ORDER_ID`),
+  CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`BOOK_ID`) REFERENCES `books` (`BOOK_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -128,12 +128,12 @@ DROP TABLE IF EXISTS `orders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `orders` (
-  `order_id` int NOT NULL AUTO_INCREMENT,
-  `customer_id` int DEFAULT NULL,
-  `order_date` date DEFAULT NULL,
-  PRIMARY KEY (`order_id`),
-  KEY `customer_id` (`customer_id`),
-  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
+  `ORDER_ID` int NOT NULL AUTO_INCREMENT,
+  `CUSTOMER_ID` int DEFAULT NULL,
+  `ORDER_DATE` date DEFAULT NULL,
+  PRIMARY KEY (`ORDER_ID`),
+  KEY `CUSTOMER_ID` (`CUSTOMER_ID`),
+  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`CUSTOMER_ID`) REFERENCES `customers` (`CUSTOMER_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -155,4 +155,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-20 20:22:16
+-- Dump completed on 2025-10-20 21:18:23
